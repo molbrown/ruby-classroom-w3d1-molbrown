@@ -17,11 +17,17 @@ def assignment_scores(hash, number)
     end
 end
 
-
 # Given a grade_hash and assignment number, return the average score for that
 # assignment. Note that Ruby counts arrays from 0, but we are referring to
 # them as 1-10.
 
+def assignment_average_score(hash, number)
+    assignment = number - 1
+    scores = hash.map do |key, val|
+                hash[key][assignment]
+            end
+    scores.sum/scores.length
+end
 
 # Return a hash of students and their average score.
 # TIP: To convert an array like [[:indiana, 90], [:nevada, 80]] to a hash,
