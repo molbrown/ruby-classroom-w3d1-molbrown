@@ -35,7 +35,7 @@ end
 def averages(hash)
     all_arrays = hash.map do |key, val|
                     avg_score = val.sum/val.length
-                    ary = [key, avg_score]
+                    [key, avg_score]
                 end
     all_arrays.to_h
 end
@@ -65,7 +65,7 @@ end
 def final_letter_grades(hash)
     all_arrays = hash.map do |key, val|
                     avg_score = val.sum/val.length
-                    ary = [key, letter_grade(avg_score)]
+                    [key, letter_grade(avg_score)]
                 end
     all_arrays.to_h
 end
@@ -79,17 +79,18 @@ def class_average(hash)
     total/hash.length
 end
 
-
-# def class_average(hash)
-#     all_arrays = hash.map do |key, val|
-#         avg_score = val.sum/val.length
-#         Array.new(key, avg_score)
-#     end
-#     avgs = all_arrays.to_h
-#     avgs.map do |k, v|
-#         v.sum/v.length
-#     end
-# end
-
 # Return an array of the top `number_of_students` students.
-
+def top_students(hash, num)
+    i_num = num - 1
+    all_arrays = hash.map do |key, val|
+        avg_score = val.sum/val.length
+        [key, avg_score]
+    end
+    sorted = all_arrays.sort_by do |k, v|
+                v
+            end
+    good_grades = sorted.reverse
+    (0..i_num).map do |i|
+        good_grades[i][0]
+    end
+end
