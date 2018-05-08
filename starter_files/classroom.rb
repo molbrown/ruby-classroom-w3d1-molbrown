@@ -71,7 +71,25 @@ def final_letter_grades(hash)
 end
 
 # Return the average for the entire class.
+def class_average(hash)
+    student_hash = averages(hash)
+    total = student_hash.sum do |key, val|
+                val
+            end
+    total/hash.length
+end
 
+
+# def class_average(hash)
+#     all_arrays = hash.map do |key, val|
+#         avg_score = val.sum/val.length
+#         Array.new(key, avg_score)
+#     end
+#     avgs = all_arrays.to_h
+#     avgs.map do |k, v|
+#         v.sum/v.length
+#     end
+# end
 
 # Return an array of the top `number_of_students` students.
 
